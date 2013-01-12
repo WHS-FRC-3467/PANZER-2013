@@ -24,6 +24,8 @@ public class OI {
 		return instance;
 	}
 
+	//Rawr
+	
 	// Create and return gamepad values
 	private Gamepad gamepad1 = new Gamepad(RobotMap.gamepad1);
 	private Gamepad gamepad2 = new Gamepad(RobotMap.gamepad2);
