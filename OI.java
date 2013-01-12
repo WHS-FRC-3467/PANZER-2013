@@ -7,8 +7,8 @@ import org.usfirst.frc0.commands.rollers.RejectBalls;
 import org.usfirst.frc0.commands.rollers.RejectShoot;
 import org.usfirst.frc0.commands.rollers.Shoot;
 import org.usfirst.frc0.commands.shooter.AdjustSpeed;
+import org.usfirst.frc0.peripherals.Gamepad;
 
-import peripherals.Gamepad;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 

@@ -1,4 +1,4 @@
-package peripherals;
+package org.usfirst.frc0.peripherals;
 
 public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public static int xButton = 1;
