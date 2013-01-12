@@ -48,5 +48,7 @@ public class RobotMap {
 	public final static double Kd = 0;
 	public final static double Kp = 0;
 	public final static double Ki = 0;
+	
+	///////////////josh
 
 }
