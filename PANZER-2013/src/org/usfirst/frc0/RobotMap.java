@@ -50,8 +50,6 @@ public class RobotMap {
 	public final static double Ki = 0;
 	
 	
-	///////////////
-	
 	
 	//////
 	//Josh
