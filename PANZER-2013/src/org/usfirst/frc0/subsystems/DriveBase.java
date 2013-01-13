@@ -10,14 +10,6 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveBase extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
-	public void initDefaultCommand() {
-		// Do nothing here
-		// Supposed to initialize the default command
-		// here but i do it in the getInstance method
-	}
 
 	private static DriveBase instance = null;
 	private RobotDrive drive;
@@ -30,7 +22,6 @@ public class DriveBase extends Subsystem {
 	public static DriveBase getInstance() {
 		if (instance == null) {
 			instance = new DriveBase();
-			instance.setDefaultCommand(new Drive());
 		}
 		return instance;
 	}
@@ -49,9 +40,13 @@ public class DriveBase extends Subsystem {
 		drive.setSafetyEnabled(false); // to simplify explanation (not good practice)
 	}
 
+	public void initDefaultCommand() {
+		instance.setDefaultCommand(new Drive());
+	}
+
 	public void driveRobot() {
-		double left = OI.getInstance().getGamepad1().getLeftStickY();
-		double right = OI.getInstance().getGamepad1().getRightStickY();
+		double left = OI.getInstance().getDriverGamepad().getLeftStickY();
+		double right = OI.getInstance().getDriverGamepad().getRightStickY();
 		drive.tankDrive(left, right);
 	}
 

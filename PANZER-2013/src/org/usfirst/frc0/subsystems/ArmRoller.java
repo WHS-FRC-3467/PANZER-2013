@@ -8,21 +8,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class ArmRoller extends Subsystem {
 
-	protected void initDefaultCommand() {
-		// Do nothing here
-		// Supposed to initialize the default command
-		// here but i do it in the getInstance method
-	}
-
 	private static ArmRoller instance = null;
-	Relay feedmotor = new Relay(RobotMap.armRollerSpikePort,Relay.Direction.kBoth);
+	Relay feedmotor = new Relay(RobotMap.armRollerRelay, Relay.Direction.kBoth);
 
 	public static ArmRoller getInstance() {
 		if (instance == null) {
 			instance = new ArmRoller();
-			instance.setDefaultCommand(new OffArm());
 		}
 		return instance;
+	}
+
+	protected void initDefaultCommand() {
+		instance.setDefaultCommand(new OffArm());
 	}
 
 	public void off() {

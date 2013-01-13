@@ -1,38 +1,11 @@
 package org.usfirst.frc0.commands.arm;
 
-import org.usfirst.frc0.commands.CommandBase;
-import org.usfirst.frc0.subsystems.ArmRoller;
+import org.usfirst.frc0.RobotMap;
 
-public class StowArm extends CommandBase {
-	ArmRoller armRollerSubsytem;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
+public class StowArm extends CommandGroup {
 	public StowArm() {
-		armRollerSubsytem = ArmRoller.getInstance();
-		requires(armRollerSubsytem);
+		addParallel(new SetArmPos(RobotMap.armPosStow));
 	}
-
-	protected void initialize() {
-		// TODO Auto-generated method stub
-
-	}
-
-	protected void execute() {
-		armRollerSubsytem.forward();
-	}
-
-	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	protected void end() {
-		// TODO Auto-generated method stub
-
-	}
-
-	protected void interrupted() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

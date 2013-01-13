@@ -1,37 +1,38 @@
 package org.usfirst.frc0.commands.arm;
 
 import org.usfirst.frc0.commands.CommandBase;
-import org.usfirst.frc0.subsystems.ArmRoller;
+import org.usfirst.frc0.subsystems.Arm;
 
 public class SetArmPos extends CommandBase {
-	ArmRoller armRollerSubsytem;
+	Arm armSubsytem;
+	double armPosition;
 
-	public SetArmPos() {
-		armRollerSubsytem = ArmRoller.getInstance();
-		requires(armRollerSubsytem);
+	public SetArmPos(double armPos) {
+		armSubsytem = Arm.getInstance();
+		requires(armSubsytem);
+		armPosition = armPos;
 	}
 
 	protected void initialize() {
-		// TODO Auto-generated method stub
-
+		armSubsytem.setSetpoint(armPosition);
 	}
 
 	protected void execute() {
-		armRollerSubsytem.forward();
+
 	}
 
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		if (Math.abs(Arm.getInstance().getPosition() - armPosition) < 0.05)
+			return true;
+		else
+			return false;
 	}
 
 	protected void end() {
-		// TODO Auto-generated method stub
 
 	}
 
 	protected void interrupted() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -7,7 +7,6 @@
 
 package org.usfirst.frc0;
 
-
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,56 +15,52 @@ import org.usfirst.frc0.commands.CommandBase;
 import org.usfirst.frc0.commands.autonomous.Autonomous;
 
 /**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
+ * The VM is configured to automatically run this class, and to call the functions corresponding to each mode, as described in the IterativeRobot documentation. If you change the name of this class or
+ * the package after creating this project, you must also update the manifest file in the resource directory.
  */
 public class CommandBasedRobot extends IterativeRobot {
 
-    Command autonomousCommand;
+	Command autonomousCommand;
 
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
-    	//Create and start the compressor. It will control pressure automagically
-    	Compressor comp = new Compressor(RobotMap.preasureSwitch, RobotMap.compresserRelay);
+	/**
+	 * This function is run when the robot is first started up and should be used for any initialization code.
+	 */
+	public void robotInit() {
+		// Create and start the compressor. It will control pressure automagically
+		Compressor comp = new Compressor(RobotMap.pneumaticPreasureSwitch, RobotMap.compresserRelay);
 		comp.start();
-    	
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new Autonomous();
-        
-        // Initialize all subsystems
-        CommandBase.init();
-    }
 
-    public void autonomousInit() {
-        // schedule the autonomous command (example)
-        autonomousCommand.start();
-    }
+		// instantiate the command used for the autonomous period
+		autonomousCommand = new Autonomous();
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
+		// Initialize all subsystems
+		CommandBase.init();
+	}
 
-    public void teleopInit() {
+	public void autonomousInit() {
+		// schedule the autonomous command (example)
+		autonomousCommand.start();
+	}
+
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to 
+		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		autonomousCommand.cancel();
-    }
+	}
 
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-    }
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+	}
 }

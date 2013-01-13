@@ -31,7 +31,7 @@ public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public double getLeftStickY() {
 		return getRawAxis(leftStick_yAxis);
 	}
-	
+
 	public boolean getLeftAxisButton() {
 		return getRawButton(leftStickPress);
 	}
@@ -43,7 +43,7 @@ public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public double getRightStickY() {
 		return getRawAxis(rightStick_yAxis);
 	}
-	
+
 	public boolean getRightAxisButton() {
 		return getRawButton(rightStickPress);
 	}
@@ -55,7 +55,7 @@ public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public boolean getRightBumper() {
 		return getRawButton(rightBumper);
 	}
-	
+
 	public boolean getLeftTrigger() {
 		return getRawButton(leftTrigger);
 	}
@@ -67,27 +67,27 @@ public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public boolean getXButton() {
 		return getRawButton(xButton);
 	}
-	
+
 	public boolean getAButton() {
 		return getRawButton(aButton);
 	}
-	
+
 	public boolean getBButton() {
 		return getRawButton(bButton);
 	}
-	
+
 	public boolean getYButton() {
 		return getRawButton(yButton);
 	}
-	
+
 	public boolean getStartButton() {
 		return getRawButton(startButton);
 	}
-	
+
 	public boolean getBackButton() {
 		return getRawButton(backButton);
 	}
-	
+
 	public boolean getDpadLeft() {
 		return isDown(dPadX, true);
 	}
@@ -95,15 +95,15 @@ public class Gamepad extends edu.wpi.first.wpilibj.Joystick {
 	public boolean getDpadRight() {
 		return isDown(dPadX, false);
 	}
-	
+
 	public boolean getDpadUp() {
 		return isDown(dPadX, true);
 	}
-	
+
 	public boolean getDpadDown() {
 		return isDown(dPadY, false);
 	}
-	
+
 	private boolean isDown(int pad, boolean isNeg) {
 		boolean down = false;
 		double axis = getRawAxis(pad);

@@ -1,37 +1,40 @@
 package org.usfirst.frc0.commands.arm;
 
+import org.usfirst.frc0.OI;
+import org.usfirst.frc0.RobotMap;
 import org.usfirst.frc0.commands.CommandBase;
-import org.usfirst.frc0.subsystems.ArmRoller;
+import org.usfirst.frc0.subsystems.Arm;
 
 public class DynamicArm extends CommandBase {
-	ArmRoller armRollerSubsytem;
+	Arm armSubsytem;
 
 	public DynamicArm() {
-		armRollerSubsytem = ArmRoller.getInstance();
-		requires(armRollerSubsytem);
+		armSubsytem = Arm.getInstance();
+		requires(armSubsytem);
 	}
 
 	protected void initialize() {
-		// TODO Auto-generated method stub
 
 	}
 
 	protected void execute() {
-		armRollerSubsytem.forward();
+		double opY = OI.getInstance().getOperatorGampad().getRightStickY();
+		if (opY < 0) {
+			opY = 0;
+		}
+		opY = RobotMap.armPosStow - (RobotMap.armPosStow - RobotMap.armPosBottom) * opY;
+		armSubsytem.setSetpoint(opY);
 	}
 
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	protected void end() {
-		// TODO Auto-generated method stub
 
 	}
 
 	protected void interrupted() {
-		// TODO Auto-generated method stub
 
 	}
 

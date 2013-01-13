@@ -1,4 +1,3 @@
-
 package org.usfirst.frc0.commands.driveBase;
 
 import org.usfirst.frc0.commands.CommandBase;
@@ -6,33 +5,26 @@ import org.usfirst.frc0.subsystems.DriveBase;
 
 public class Drive extends CommandBase {
 	DriveBase driveSubsystem;
-    public Drive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	driveSubsystem = DriveBase.getInstance();
-    	requires(driveSubsystem);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	public Drive() {
+		driveSubsystem = DriveBase.getInstance();
+		requires(driveSubsystem);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	driveSubsystem.driveRobot();
-    }
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	protected void execute() {
+		driveSubsystem.driveRobot();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	protected void end() {
+	}
+
+	protected void interrupted() {
+	}
 }

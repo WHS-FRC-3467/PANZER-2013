@@ -13,15 +13,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Shooter extends Subsystem {
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
-	public void initDefaultCommand() {
-		// Do nothing here
-		// Supposed to initialize the default command
-		// here but i do it in the getInstance method
-	}
-
 	private static Shooter instance = null;
 	private RobotDrive drive;
 
@@ -33,9 +24,12 @@ public class Shooter extends Subsystem {
 	public static Shooter getInstance() {
 		if (instance == null) {
 			instance = new Shooter();
-			instance.setDefaultCommand(new AdjustSpeed(0));
 		}
 		return instance;
+	}
+
+	public void initDefaultCommand() {
+		instance.setDefaultCommand(new AdjustSpeed(0));
 	}
 
 	public Shooter() {
@@ -62,7 +56,7 @@ public class Shooter extends Subsystem {
 		} else if (speed < 0.0) {
 			speed = 0.0;
 		}
-		
+
 		try {
 			jag1.setX(speed);
 			jag2.setX(speed);

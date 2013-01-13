@@ -8,16 +8,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Pneumatics extends Subsystem {
 	Solenoid sole1;
 	Solenoid sole2;
-	public Pneumatics() {
-		sole1 = new Solenoid(RobotMap.sole1Port);
-		sole2 = new Solenoid(RobotMap.sole2Port);
-	}
-	
-	protected void initDefaultCommand() {
-		//Do nothing here
-		//Supposed to initialize the default command 
-		//here but i do it in the getInstance method
-	}
 	
 	private static Pneumatics instance = null;
 
@@ -26,6 +16,15 @@ public class Pneumatics extends Subsystem {
 			instance = new Pneumatics();
 		}
 		return instance;
+	}
+	
+	public Pneumatics() {
+		sole1 = new Solenoid(RobotMap.sole1Port);
+		sole2 = new Solenoid(RobotMap.sole2Port);
+	}
+	
+	protected void initDefaultCommand() {
+		//Keep it in whatever gear it was already in
 	}
 
 	public void shiftHigh() {

@@ -3,18 +3,13 @@ package org.usfirst.frc0.subsystems;
 import org.usfirst.frc0.RobotMap;
 import org.usfirst.frc0.commands.arm.DynamicArm;
 import org.usfirst.frc0.commands.arm.ManualArmControl;
-import org.usfirst.frc0.commands.shooter.AdjustSpeed;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
 public class Arm extends PIDSubsystem {
 	private static Arm instance = null;
 	CANJaguar armJag;
@@ -38,6 +33,7 @@ public class Arm extends PIDSubsystem {
 		else
 			instance.setDefaultCommand(new DynamicArm());
 	}
+
 	public Arm() {
 		super("Arm", Kp, Ki, Kd);
 		try {
@@ -48,7 +44,7 @@ public class Arm extends PIDSubsystem {
 			e.printStackTrace();
 		}
 
-		pot = new AnalogChannel(RobotMap.armPot);
+		pot = new AnalogChannel(RobotMap.armPotAnalog);
 
 		if (RobotMap.isManual) {
 			System.out.println("Arm set to manual...");
@@ -64,35 +60,23 @@ public class Arm extends PIDSubsystem {
 	}
 
 	public void usePIDOutput(double output) {
-
 		try {
 			if (armJag.getPowerCycled())
 				configJags();
-		} catch (CANTimeoutException e) {
-			e.printStackTrace();
-		}
-
-		if (output > .95)
-			output = 0.95;
-		if (output < -.95)
-			output = -0.95;
-
-		try {
+			if (output > .95)
+				output = 0.95;
+			if (output < -.95)
+				output = -0.95;
 			armJag.setX(output);
 		} catch (CANTimeoutException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private void configJags() {
-		try {
-			armJag.configNeutralMode(CANJaguar.NeutralMode.kBrake);
-			armJag.setExpiration(RobotMap.motorSafteyTimeout);
-			armJag.configFaultTime(0.5);
-		} catch (CANTimeoutException e) {
-			e.printStackTrace();
-		}
+	private void configJags() throws CANTimeoutException {
+		armJag.configNeutralMode(CANJaguar.NeutralMode.kBrake);
+		armJag.setExpiration(RobotMap.motorSafteyTimeout);
+		armJag.configFaultTime(0.5);
 	}
 
 	public void directDrive(float input) {

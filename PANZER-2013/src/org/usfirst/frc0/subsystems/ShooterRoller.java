@@ -9,14 +9,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ShooterRoller extends Subsystem {
 
 	protected void initDefaultCommand() {
-		//Do nothing here
-		//Supposed to initialize the default command 
-		//here but i do it in the getInstance method
+		// Do nothing here
+		// Supposed to initialize the default command
+		// here but i do it in the getInstance method
 	}
-	
+
 	private static ShooterRoller instance = null;
-	Relay feedmotor = new Relay(RobotMap.shooterRollerSpikePort,Relay.Direction.kBoth);
-	
+	Relay feedmotor = new Relay(RobotMap.shooterRollerRelay, Relay.Direction.kBoth);
+
 	public static ShooterRoller getInstance() {
 		if (instance == null) {
 			instance = new ShooterRoller();
@@ -24,7 +24,7 @@ public class ShooterRoller extends Subsystem {
 		}
 		return instance;
 	}
-	
+
 	public void off() {
 		feedmotor.set(Relay.Value.kOff);
 	}
