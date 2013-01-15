@@ -5,8 +5,6 @@ package org.usfirst.frc0;
  * reduces the number of magic numbers floating around.
  */
 public class RobotMap {
-	// I AM THE SUPREAM OVERLOARD
-
 	// Gamepads
 	public static final int gamepad1 = 1;
 	public static final int gamepad2 = 2;
