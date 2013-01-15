@@ -24,7 +24,7 @@ public class RobotMap {
 	public static final int shooterMotor2 = 8;
 
 	// Analog Modules
-	public static final int armPotAnalog = 8;
+	public static final int armPotAnalog = 3;
 
 	// Relays
 	public static final int compresserRelay = 1;
@@ -45,12 +45,12 @@ public class RobotMap {
 	public static final int sole2Port = 2;
 
 	// Arm
-	public static final boolean isManual = false;
-	public static final double armPosBottom = 2.14;
-	public static final double armPosStow = 2.47;
+	public static final boolean isManual = true;
+	public static double armPosBottom = 2.14;
+	public static double armPosStow = 2.47;
 
-	public final static double Kd = 0;
-	public final static double Kp = 0;
+	public final static double Kp = 10;
 	public final static double Ki = 0;
+	public final static double Kd = 0;
 
 }
